@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** URL to query the USGS dataset for earthquake information */
     private static final String USGS_REQUEST_URL =
-            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2012-01-01&endtime=2012-12-01&minmagnitude=6";
+            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-12-01&minmagnitude=7";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +62,15 @@ public class MainActivity extends AppCompatActivity {
      */
     private void updateUi(Event earthquake) {
         // Display the earthquake title in the UI
-        TextView titleTextView = (TextView) findViewById(R.id.title);
+        TextView titleTextView = findViewById(R.id.title);
         titleTextView.setText(earthquake.title);
 
         // Display the earthquake date in the UI
-        TextView dateTextView = (TextView) findViewById(R.id.date);
+        TextView dateTextView = findViewById(R.id.date);
         dateTextView.setText(getDateString(earthquake.time));
 
         // Display whether or not there was a tsunami alert in the UI
-        TextView tsunamiTextView = (TextView) findViewById(R.id.tsunami_alert);
+        TextView tsunamiTextView = findViewById(R.id.tsunami_alert);
         tsunamiTextView.setText(getTsunamiAlertString(earthquake.tsunamiAlert));
     }
 
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                     long time = properties.getLong("time");
                     int tsunamiAlert = properties.getInt("tsunami");
 
-                    // Create a new {@link Event} object
+                    // Create a new here{@link Event} object
                     return new Event(title, time, tsunamiAlert);
                 }
             } catch (JSONException e) {
